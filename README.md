@@ -1,14 +1,14 @@
 # Utilisation de PDO
 
 Pour cet exercice, nous allons créer une base de données `computer_selling`
-- [ ] Créer la base de données
-- [ ] y importer le fichier `computer_selling.sql`
+- [X] Créer la base de données
+- [X] y importer le fichier `computer_selling.sql`
   
 ## Connexion à la base de données
 
-- [ ] Créer un fichier `includes/connect.php`
-- [ ] Se connecter à la base de données grâce à PDO
-  - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
+- [X] Créer un fichier `includes/connect.php`
+- [X] Se connecter à la base de données grâce à PDO
+  - [X] Vérifier que la connexion fonctionne (grâce à un try/catch)
 
 ## Insertion de données
 
@@ -47,15 +47,15 @@ try {
     $statement->execute();
 ```
 
-- [ ] Créer un fichier `insert.php`
-  - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
-- [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans toutes les tables
-  - [ ] Utiliser une requête directe
-  - [ ] Et/ou Utiliser une requête préparée pour d'autres entrées
+- [X] Créer un fichier `insert.php`
+  - [X] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
+- [X] Ajouter un ou des scripts qui vont ajouter des entrées dans toutes les tables
+  - [X] Utiliser une requête directe
+  - [X] Et/ou Utiliser une requête préparée pour d'autres entrées
 
-- [ ] Créer un fichier `update.php`
-  - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
-- [ ] On va ajouter un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
+- [X] Créer un fichier `update.php`
+  - [X] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
+- [X] On va ajouter un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
   - [ ] pour `components` ce champ va pouvoir avoir les valeurs `cpu`, `graphicCard`, `motherBoard`, `ram`
   - [ ] pour `computer` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
   - [ ] pour `device` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
