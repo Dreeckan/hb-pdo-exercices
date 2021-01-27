@@ -1,17 +1,5 @@
 # Utilisation de PDO
 
-Pour cet exercice, nous allons créer une base de données `computer_selling`
-- [ ] Créer la base de données
-- [ ] y importer le fichier `computer_selling.sql`
-  
-## Connexion à la base de données
-
-- [ ] Créer un fichier `includes/connect.php`
-- [ ] Se connecter à la base de données grâce à PDO
-  - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
-
-## Insertion de données
-
 Rappel de ce qu'on a vu dans le cours : 
 
 - Se connecter à la base de données :
@@ -47,9 +35,23 @@ try {
     $statement->execute();
 ```
 
+## Préparer notre base de données
+
+Pour cet exercice, nous allons créer une base de données `computer_selling`
+- [ ] Créer la base de données
+- [ ] y importer le fichier `computer_selling.sql`
+  
+## Connexion à la base de données
+
+- [ ] Créer un fichier `includes/connect.php`
+- [ ] Se connecter à la base de données grâce à PDO
+  - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
+
+## Insertion de données
+
 - [ ] Créer un fichier `insert.php`
   - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
-- [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans toutes les tables
+- [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans les tables `computer`, `component` et `device`
   - [ ] Utiliser une requête directe
   - [ ] Et/ou Utiliser une requête préparée pour d'autres entrées
 
