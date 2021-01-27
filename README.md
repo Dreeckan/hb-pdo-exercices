@@ -14,11 +14,11 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
   - [ ] `brand` (string)
   - [ ] `name` (string)
 - [ ] Créer une table `computer_has_component` avec les champs suivants :
-  - [ ] `computer_id`
-  - [ ] `component_id`
+  - [ ] `computer_id` (clé étrangère)
+  - [ ] `component_id` (clé étrangère)
 - [ ] Créer une table `computer_has_device` avec les champs suivants :
-  - [ ] `computer_id`
-  - [ ] `device_id`
+  - [ ] `computer_id` (clé étrangère)
+  - [ ] `device_id` (clé étrangère)
 
 ## Insertion de données
 
