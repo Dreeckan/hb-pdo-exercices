@@ -52,8 +52,12 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
 - [ ] Créer un fichier `insert.php`
   - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
 - [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans les tables `computer`, `component` et `device`
-  - [ ] Utiliser une requête directe
-  - [ ] Et/ou Utiliser une requête préparée pour d'autres entrées
+  - [ ] Utiliser une requête directe pour insérer des ordinateurs `computer`
+  - Ajouter des composants `component` et des périphériques `device`.
+    - [ ] Utiliser un tableau pour faire une boucle et insérer tous vos composants avec une requête préparée
+- [ ] Vérifier que vos données sont insérées dans PhpMyAdmin
+- [ ] Vérifier que vos données sont insérées avec une requête (directe ou préparée)
+  - [ ] Afficher toutes les données
 
 - [ ] Créer un fichier `update.php`
   - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
@@ -62,3 +66,5 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
   - [ ] pour `computer` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
   - [ ] pour `device` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
 - [ ] Mettre à jour nos entrées pour leur ajouter un type valide, en utilisant PDO (je vous conseille d'ajouter le type un peu aléatoirement)
+- [ ] Faire une requête (directe ou préparée) avec PDO pour récupérer ce que vous avez inséré et vérifier vos données
+  - [ ] Afficher toutes les données
