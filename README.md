@@ -29,4 +29,7 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
 - [ ] Créer un fichier `insert.php`
 - [ ] Se connecter à la base de données grâce à PDO
   - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
-- [ ] Ajouter un script qui va ajouter des entrées dans toutes les tables
+- [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans toutes les tables
+  - [ ] Utiliser une requête directe au format
+  - [ ] Utiliser une requête préparée pour d'autres entrées
+  
