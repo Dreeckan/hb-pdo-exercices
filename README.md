@@ -35,6 +35,15 @@ try {
     $statement->execute();
 ```
 
+- Faire un select (requête préparée) :
+
+```php
+    $sql = "SELECT * FROM computer";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+```
+
 ## Préparer notre base de données
 
 Pour cet exercice, nous allons créer une base de données `computer_selling`
@@ -47,24 +56,39 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
 - [ ] Se connecter à la base de données grâce à PDO
   - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
 
-## Insertion de données
+## Insertion de données (requête directe)
 
 - [ ] Créer un fichier `insert.php`
   - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
-- [ ] Ajouter un ou des scripts qui vont ajouter des entrées dans les tables `computer`, `component` et `device`
-  - [ ] Utiliser une requête directe pour insérer des ordinateurs `computer`
-  - Ajouter des composants `component` et des périphériques `device`.
-    - [ ] Utiliser un tableau pour faire une boucle et insérer tous vos composants avec une requête préparée
+- [ ] Ajouter des entrées dans les tables `computer`, `component` et `device`
+  - [ ] Utiliser une requête directe pour insérer des ordinateurs (`computer`)
+  - [ ] Utiliser une requête directe pour insérer des composants (`component`)
+  - [ ] Utiliser une requête directe pour insérer des périphériques (`device`)
 - [ ] Vérifier que vos données sont insérées dans PhpMyAdmin
-- [ ] Vérifier que vos données sont insérées avec une requête (directe ou préparée)
+- [ ] Vérifier que vos données sont insérées avec une requête (directe)
   - [ ] Afficher toutes les données
+
+## Insertion de données (requête préparée)
+
+- [ ] Dans `insert.php`, utiliser une boucle (for pour générer des données) pour :
+  - Ajouter des entrées dans les tables `computer`, `component` et `device`
+    - [ ] Utiliser une requête directe pour insérer des ordinateurs (`computer`)
+    - [ ] Utiliser une requête directe pour insérer des composants (`component`)
+    - [ ] Utiliser une requête directe pour insérer des périphériques (`device`)
+  - [ ] Vérifier que vos données sont insérées dans PhpMyAdmin
+  - [ ] Vérifier que vos données sont insérées avec une requête (préparée)
+    - [ ] Afficher toutes les données
+
+## Mise à jour de données
 
 - [ ] Créer un fichier `update.php`
   - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
-- [ ] On va ajouter un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
+  
+- [ ] On va ajouter (avec une requête de type `ALTER TABLE`) un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
   - [ ] pour `components` ce champ va pouvoir avoir les valeurs `cpu`, `graphicCard`, `motherBoard`, `ram`
   - [ ] pour `computer` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
   - [ ] pour `device` ce champ va pouvoir avoir les valeurs `keyboard`, `mouse`, `speaker`
-- [ ] Mettre à jour nos entrées pour leur ajouter un type valide, en utilisant PDO (je vous conseille d'ajouter le type un peu aléatoirement)
+- [ ] Mettre à jour nos entrées pour leur ajouter un type valide, en utilisant PDO (je vous conseille d'ajouter le type un peu aléatoirement) et des requêtes préparées
+  
 - [ ] Faire une requête (directe ou préparée) avec PDO pour récupérer ce que vous avez inséré et vérifier vos données
   - [ ] Afficher toutes les données
