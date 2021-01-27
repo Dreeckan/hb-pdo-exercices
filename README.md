@@ -64,7 +64,7 @@ Pour cet exercice, nous allons créer une base de données `computer_selling`
 - [ ] On va ajouter un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
   - [ ] pour `components` ce champ va pouvoir avoir les valeurs `cpu`, `graphicCard`, `motherBoard`, `ram`
   - [ ] pour `computer` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
-  - [ ] pour `device` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
+  - [ ] pour `device` ce champ va pouvoir avoir les valeurs `keyboard`, `mouse`, `speaker`
 - [ ] Mettre à jour nos entrées pour leur ajouter un type valide, en utilisant PDO (je vous conseille d'ajouter le type un peu aléatoirement)
 - [ ] Faire une requête (directe ou préparée) avec PDO pour récupérer ce que vous avez inséré et vérifier vos données
   - [ ] Afficher toutes les données
