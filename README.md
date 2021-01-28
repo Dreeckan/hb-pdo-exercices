@@ -47,14 +47,22 @@ try {
 ## Préparer notre base de données
 
 Pour cet exercice, nous allons créer une base de données `computer_selling`
-- [ ] Créer la base de données
-- [ ] y importer le fichier `computer_selling.sql`
+- [x] Créer la base de données
+- [x] y importer le fichier `computer_selling.sql`
   
 ## Connexion à la base de données
 
 - [ ] Créer un fichier `includes/connect.php`
 - [ ] Se connecter à la base de données grâce à PDO
   - [ ] Vérifier que la connexion fonctionne (grâce à un try/catch)
+  
+### Pour faire plus propre
+
+Afin de ne pas partager nos identifiants et autres informations sensibles avec d'autres personnes, nous pouvons les mettre dans un fichier que nous n'allons pas versionner avec Git. Chaque personne qui fera un clone du projet **devra** alors le créer et y entrer ses propres valeurs.
+
+- [ ] Créer le fichier `includes/config.inc.php`
+- [ ] Y ajouter les variables `$dbName`, `$dbHost`, `$dbUser` et `$dbPass`
+- [ ] Les utiliser dans `includes/connect.php` à la place des valeurs "en dur"
 
 ## Insertion de données (requête directe)
 

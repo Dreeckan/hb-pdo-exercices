@@ -1,10 +1,11 @@
 <?php
-$dsn = 'mysql:dbname=computer_selling;host=127.0.0.1';
-$user = 'root'; // Utilisateur par défaut
-$password = ''; // Par défaut, pas de mot de passe sur Wamp
+// Ce fichier n'est pas versionné avec git, il faut le recréer quand on clone le projet
+require_once 'config.inc.php';// Pour récupérer les variables $dbName, $dbHost, $dbUser et $dbPass
+
+$dsn = 'mysql:dbname='.$dbName.';host='.$dbHost;
 
 try {
-    $connection = new PDO($dsn, $user, $password);
+    $connection = new PDO($dsn, $dbUser, $dbPass);
 } catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
+    exit('Connexion échouée : ' . $e->getMessage());
 }
