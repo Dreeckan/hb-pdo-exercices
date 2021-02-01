@@ -50,6 +50,10 @@ try {
         if (!$isDone) {
             throw new Exception('Erreur');
         }
+        
+        $id = $connection->lastInsertId();
+        
+        echo 'Composant '.$donnee[0].' inséré à avec l\'id '. $id;
     }
 ```
 
@@ -127,6 +131,5 @@ Afin de ne pas partager nos identifiants et autres informations sensibles avec d
   - [ ] Vérifier que vos données sont insérées avec une requête (préparée)
     - [ ] Afficher toutes les données
   
-
 ## Gérer les tables de relation
   
