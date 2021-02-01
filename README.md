@@ -12,7 +12,7 @@ $password = ''; // Par défaut, pas de mot de passe sur Wamp
 try {
     $connection = new PDO($dsn, $user, $password);
 } catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
+    exit('Connexion échouée : ' . $e->getMessage());
 }
 ```
 
@@ -23,16 +23,34 @@ try {
     $count = $connection->exec($sql);
 ```
 
+```php
+    $sql = "SELECT * FROM computer";
+    $statement = $connection->query($sql); // Récupération d'un objet PDOStatement
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    // équivalent (mais en récupérant des objets) à : while ($result = $statement->fetch(PDO::FETCH_OBJ)) {}
+```
+
 - Une requête préparée :
 
 ```php
-    $sql = "INSERT INTO `component`(`name`, `brand`) VALUES (:name, :brand)";
-    $name = 'Pièce de la mort';
-    $brand = 'ASTUS';
+    $sql = "INSERT INTO component(name, brand) VALUES (:name, :brand)";
+    
+    $donnees = [
+        ['Pièce de la mort', 'ASTUS'],
+        ['Pièce de la mort', 'ASTUS'],
+        ['Pièce de la mort', 'ASTUS'],
+    ];
     $statement = $connection->prepare($sql);
-    $statement->bindParam(':name', $name, PDO::PARAM_STR);
-    $statement->bindParam(':brand', $brand, PDO::PARAM_STR);
-    $statement->execute();
+    
+    foreach ($donnees as $donnee) {
+        $statement->bindParam(':name', $donnee[0], PDO::PARAM_STR);
+        $statement->bindParam(':brand', $donnee[1], PDO::PARAM_STR);
+        $isDone = $statement->execute();
+        
+        if (!$isDone) {
+            throw new Exception('Erreur');
+        }
+    }
 ```
 
 - Faire un select (requête préparée) :
@@ -40,15 +58,37 @@ try {
 ```php
     $sql = "SELECT * FROM computer";
     $statement = $connection->prepare($sql);
-    $statement->execute();
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $isDone = $statement->execute();
+
+    if (!$isDone) {
+        throw new Exception('Erreur');
+    }
+    // équivalent à : $results = $statement->fetchAll(PDO::FETCH_ASSOC); 
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $results = $statement->fetchAll();
 ```
+
+- Last insert id :
+
+```php
+    $sql = "INSERT INTO `computer`(`name`) VALUES ('ASTUS Rogue One'), ('Sansong Galaxy Truc')";
+    $count = $connection->exec($sql);
+
+    $idComputer = $connection->lastInsertId(); // Contient l'identifiant de l'ordinateur : 'Sansong Galaxy Truc'
+```
+
+- Traiter/nettoyer des données, des fonctions PHP utiles :
+  - [htmlspecialchars](https://www.php.net/manual/fr/function.htmlspecialchars) ([table de conversion des caractères ](https://alexandre.alapetite.fr/doc-alex/alx_special.html)) Convertit les caractères spéciaux en entités HTML (comme `<`)
+  - [strip_tags](https://www.php.net/manual/fr/function.strip-tags) supprimer tout ou partie du html d'une chaine de caractères
+  - [nl2br](https://www.php.net/manual/fr/function.nl2br.php) passer des sauts de ligne (`\n` et consorts) à des sauts de lignes html
+  - [password_hash](https://www.php.net/manual/fr/function.password-hash.php) pour encoder un mot de passe
+
 
 ## Préparer notre base de données
 
 Pour cet exercice, nous allons créer une base de données `computer_selling`
-- [x] Créer la base de données
-- [x] y importer le fichier `computer_selling.sql`
+- [ ] Créer la base de données
+- [ ] y importer le fichier `computer_selling.sql`
   
 ## Connexion à la base de données
 
@@ -86,17 +126,7 @@ Afin de ne pas partager nos identifiants et autres informations sensibles avec d
   - [ ] Vérifier que vos données sont insérées dans PhpMyAdmin
   - [ ] Vérifier que vos données sont insérées avec une requête (préparée)
     - [ ] Afficher toutes les données
-
-## Mise à jour de données
-
-- [ ] Créer un fichier `update.php`
-  - [ ] Y appeler nos deux fichiers `includes/connect.php` et `includes/autoload.php`
   
-- [ ] On va ajouter (avec une requête de type `ALTER TABLE`) un champ `type` de type VARCHAR(32), qui peut être `NULL` dans les tables `computer`, `component` et `device` (qui va nous permettre de distinguer le type réel, et donc l'objet à utiliser)
-  - [ ] pour `components` ce champ va pouvoir avoir les valeurs `cpu`, `graphicCard`, `motherBoard`, `ram`
-  - [ ] pour `computer` ce champ va pouvoir avoir les valeurs `desktop`, `laptop`, `tablet`
-  - [ ] pour `device` ce champ va pouvoir avoir les valeurs `keyboard`, `mouse`, `speaker`
-- [ ] Mettre à jour nos entrées pour leur ajouter un type valide, en utilisant PDO (je vous conseille d'ajouter le type un peu aléatoirement) et des requêtes préparées
+
+## Gérer les tables de relation
   
-- [ ] Faire une requête (directe ou préparée) avec PDO pour récupérer ce que vous avez inséré et vérifier vos données
-  - [ ] Afficher toutes les données
